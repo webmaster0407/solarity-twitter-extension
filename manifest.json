@@ -1,0 +1,46 @@
+{
+
+ "browser_action": {
+   "default_icon": {
+    "128": "images/ext.png",
+    "16": "images/ext.png",
+    "48": "images/ext.png"
+  },
+  "default_title": "Twitter EXT"
+},
+"description": "Twitter EXT",
+"icons": {
+ "128": "images/ext.png",
+ "16": "images/ext.png",
+ "48": "images/ext.png"
+},
+"background": {
+  "scripts": ["libs/jquery.js","js/const.js","js/background.js"]
+},
+"manifest_version": 2,
+"name": "Twitter EXT",
+"permissions": [ "storage","https://solarity.muhash.com/api/*","https://solarity-server.herokuapp.com/api/*","https://solarity-web-git-master-hassan-sk.vercel.app/*","https://i.imgur.com/*"],
+
+"content_scripts": [
+  {
+    "all_frames": true,
+    "css": ["css/modal.css","css/btn.css" ],
+    "js": [
+      "libs/jquery-3.1.1.min.js",
+      "libs/modal.js",
+      "js/const.js",
+      "contentscript/content_ext.js","contentscript/inject.js"
+    ],
+    "matches": [
+      "*://*.twitter.com/*"
+    ],
+    "run_at": "document_end"
+  }
+
+],
+
+"content_security_policy": "script-src 'self' https://aframe.io https://unpkg.com/ https://cdn.jsdelivr.net/ https://solarity.muhash.com/api/ 'unsafe-inline' 'unsafe-eval'" ,
+"short_name": "Twitter",
+"version": "1.0",
+"web_accessible_resources": ["css/*","images/*","html/*","frame/*","contentscript*"]
+}
